@@ -1,0 +1,202 @@
+{
+  "allowRemoteResourceManagement": true,
+  "policyEnforcementMode": "ENFORCING",
+  "resources": [
+    {
+      "name": "User Detail Resource",
+      "type": "urn:kargo-pratik-rest-api:resources:userdetail",
+      "ownerManagedAccess": true,
+      "displayName": "User Detail Resource",
+      "attributes": {},
+      "_id": "901f0f68-fcc2-4dc5-a0c8-09f9a4e258b8",
+      "uris": [
+        "/api/users/{userId}"
+      ],
+      "scopes": [
+        {
+          "name": "view"
+        }
+      ]
+    },
+    {
+      "name": "Calculate View Resource",
+      "type": "urn:kargo-pratik-rest-api:resources:calculate",
+      "ownerManagedAccess": false,
+      "displayName": "Calculate View Resource",
+      "attributes": {},
+      "_id": "8d49b08b-6746-473e-8f36-e1531c68bd7d",
+      "uris": [
+        "/api/calculates"
+      ]
+    },
+    {
+      "name": "Default Resource",
+      "type": "urn:kargo-pratik-rest-api:resources:default",
+      "ownerManagedAccess": false,
+      "displayName": "Default Resource",
+      "attributes": {},
+      "_id": "31aea21a-b860-48ef-ab4a-b1a696a32c76",
+      "uris": [
+        "/*"
+      ]
+    },
+    {
+      "name": "User All Resource",
+      "type": "urn:kargo-pratik-rest-api:resources:users",
+      "ownerManagedAccess": true,
+      "displayName": "User All Resource",
+      "attributes": {},
+      "_id": "09d7d305-ac95-4677-96e7-29b2e09e90c2",
+      "uris": [
+        "/api/users/*"
+      ],
+      "scopes": [
+        {
+          "name": "view"
+        }
+      ]
+    },
+    {
+      "name": "Shipment All Resource",
+      "type": "urn:kargo-pratik-rest-api:resources:shipments",
+      "ownerManagedAccess": true,
+      "displayName": "Shipment All Resource",
+      "attributes": {},
+      "_id": "8589cf43-6b5e-44bb-9cd2-9f20c8c80f88",
+      "uris": [
+        "/api/shipments/*"
+      ]
+    },
+    {
+      "name": "Shipment Detail Resource",
+      "type": "urn:kargo-pratik-rest-api:resources:shipment-detail",
+      "ownerManagedAccess": false,
+      "displayName": "Shipment Detail Resource",
+      "attributes": {},
+      "_id": "a82f10a1-9cd8-4b38-aa20-c2eed8bd4271",
+      "uris": [
+        "/api/shipments/{id}"
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "id": "93958b32-c8df-48cb-95c9-7b3187591ce5",
+      "name": "Default Policy",
+      "description": "A policy that grants access only for users within this realm",
+      "type": "js",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "code": "\n$evaluation.grant();\n"
+      }
+    },
+    {
+      "id": "37cb1e93-1903-44cd-8ffe-4b0d9b9f389d",
+      "name": "Admin Policy",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"ADMIN\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "c7f1dc1b-4dd9-45c7-8422-0a8f1f877b2c",
+      "name": "Admin Or Customer Policy",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"CUSTOMER\",\"required\":false},{\"id\":\"ADMIN\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "37d74a72-9d0e-4b98-8d24-e52a8f429da3",
+      "name": "Default Permission",
+      "description": "A permission that applies to the default resource type",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "defaultResourceType": "urn:kargo-pratik-rest-api:resources:default",
+        "applyPolicies": "[\"Default Policy\",\"Admin Or Customer Policy\"]"
+      }
+    },
+    {
+      "id": "3dd4bfad-385e-4bd7-ae78-80d78cd6cbb0",
+      "name": "Shipment All Permission",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "defaultResourceType": "urn:kargo-pratik-rest-api:resources:shipments",
+        "applyPolicies": "[\"Admin Policy\"]"
+      }
+    },
+    {
+      "id": "b84882fa-abad-429f-89bd-b134b2b84b3a",
+      "name": "Shipment Detail Permission",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "defaultResourceType": "urn:kargo-pratik-rest-api:resources:shipment-detail",
+        "applyPolicies": "[\"Admin Or Customer Policy\"]"
+      }
+    },
+    {
+      "id": "ad818d33-a76a-4653-b2bb-e3ed2e5cf2ff",
+      "name": "User All Permission",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "defaultResourceType": "urn:kargo-pratik-rest-api:resources:users",
+        "applyPolicies": "[\"Admin Or Customer Policy\"]"
+      }
+    },
+    {
+      "id": "50305ab1-1d0b-4265-aa86-d70281476149",
+      "name": "Calculate View Permission",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "defaultResourceType": "urn:kargo-pratik-rest-api:resources:calculate",
+        "applyPolicies": "[\"Admin Policy\"]"
+      }
+    }
+  ],
+  "scopes": [
+    {
+      "id": "faf5a4ff-f119-4dac-afdb-2e5a1ea1cfe8",
+      "name": "user:view"
+    },
+    {
+      "id": "5762fdd5-0c14-4d12-a65a-eea67acb4ad5",
+      "name": "calculate:view"
+    },
+    {
+      "id": "9d18084e-02c4-4575-b888-a662a2340dce",
+      "name": "view"
+    },
+    {
+      "id": "c9ed045d-0294-475c-a2c4-1de9fe39c19d",
+      "name": "create"
+    },
+    {
+      "id": "b8243d8c-6d90-4c67-9d38-39fe5648e243",
+      "name": "read-private"
+    },
+    {
+      "id": "46afe2d1-4232-4a68-988c-a9d808811aaf",
+      "name": "post-updates"
+    },
+    {
+      "id": "732cc344-06f6-471d-9863-c0d9a6b3a4f4",
+      "name": "read-public"
+    }
+  ],
+  "decisionStrategy": "UNANIMOUS"
+}

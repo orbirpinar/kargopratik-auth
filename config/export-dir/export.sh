@@ -1,0 +1,3 @@
+docker exec -it auth-server /opt/jboss/keycloak/bin/standalone.sh -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=export -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/jboss/keycloak/export-dir -Dkeycloak.migration.usersPerFile=1000 -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+
+cp kargo-pratik-realm.json kargo-pratik-users-0.json master-realm.json master-users-0.json ../import-dir

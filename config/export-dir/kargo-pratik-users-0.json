@@ -1,0 +1,139 @@
+{
+  "realm" : "kargo-pratik",
+  "users" : [ {
+    "id" : "0d0268f2-4706-4224-8367-03afa31dbd33",
+    "createdTimestamp" : 1613231518868,
+    "username" : "customer",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "id" : "d71cc8f7-c80e-49c1-a3b5-00c79c4317b7",
+      "type" : "password",
+      "createdDate" : 1613231527178,
+      "secretData" : "{\"value\":\"0pmVN+hdeHdCuJf0vXNYByHJ9v8amTrsHx3mFXseMIoNeYKzoOQpm5xPBl0PtwgnloXlk2l0Pb7yK/sywkgx6Q==\",\"salt\":\"3K39qxFs/ARieSpxSvejGA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "VERIFY_EMAIL" ],
+    "realmRoles" : [ "uma_authorization", "CUSTOMER", "offline_access" ],
+    "clientRoles" : {
+      "kargo-pratik-rest-api" : [ "CUSTOMER" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "d2dce431-af2a-4be9-8627-4203ec96e868",
+    "createdTimestamp" : 1613230942754,
+    "username" : "digitalact",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "credentials" : [ {
+      "id" : "5d6a0698-3c06-4964-8a5d-e69a930de05e",
+      "type" : "password",
+      "createdDate" : 1613230962080,
+      "secretData" : "{\"value\":\"mpL1BGDVUwbxnmcHsUggfJ87aMhMRl7fmUvLCRTBeRfjhFPsxyUIgpOQpodizEk/n0NAoGwiw7NprdlwWgFYFw==\",\"salt\":\"2E2Q1Y2ss1OO1r6MlCOsPg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "ADMIN", "uma_authorization", "offline_access" ],
+    "clientRoles" : {
+      "kargo-pratik-rest-api" : [ "ADMIN", "uma_protection" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "139dd540-8b36-4ba5-86c1-83c53cb7281c",
+    "createdTimestamp" : 1613231491044,
+    "username" : "guest",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "id" : "dea5bee5-36a7-4876-89d7-a283fec657f0",
+      "type" : "password",
+      "createdDate" : 1613231500237,
+      "secretData" : "{\"value\":\"cCVHhZjBB9pcWCDcyeJpqLe1/tK+b/dap3RS48DCrJsXIsQ9qCspRXpNlYn6zNPg1u9I9N9r9aciHODyJ4SZVw==\",\"salt\":\"bRFqxVzeT5uPjDFvOOrU3A==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "VERIFY_EMAIL" ],
+    "realmRoles" : [ "uma_authorization", "GUEST", "offline_access" ],
+    "clientRoles" : {
+      "kargo-pratik-rest-api" : [ "GUEST" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "05889694-fc66-4986-9eb0-50de99dc37ba",
+    "createdTimestamp" : 1613325035325,
+    "username" : "orbirpinar",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "Orhan",
+    "lastName" : "Birpinar",
+    "email" : "orbirpinar@gmail.com",
+    "credentials" : [ {
+      "id" : "67bd2e33-5bc3-415b-9464-72c2522c29b7",
+      "type" : "password",
+      "createdDate" : 1613325035461,
+      "secretData" : "{\"value\":\"QKEVhvypxA4XZDPhmanNIIRYbWdbYAsBZw3c2td/gWBH3CEbQrkBFpj/YQuC5BlSmkAz4fYg3ZUo5S6JeSSXZA==\",\"salt\":\"Bvy7XKrb0qV5EmwcFT9x3w==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "uma_authorization", "offline_access" ],
+    "clientRoles" : {
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "b80a60e1-c08b-44af-8190-5ee1f5633947",
+    "createdTimestamp" : 1616246900945,
+    "username" : "service-account-kargo-pratik-rest-api",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "kargo-pratik-rest-api",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "realm-management" : [ "manage-authorization", "query-groups", "query-realms", "manage-events", "create-client", "manage-realm", "realm-admin", "impersonation", "query-users", "manage-clients", "manage-users", "query-clients", "manage-identity-providers" ],
+      "kargo-pratik-rest-api" : [ "uma_protection" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "758d7a06-ac1b-49aa-b735-9d2571f252b4",
+    "createdTimestamp" : 1616337084348,
+    "username" : "super_admin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "credentials" : [ {
+      "id" : "f489d7d4-706d-4cfc-b89b-8ebf33318635",
+      "type" : "password",
+      "createdDate" : 1616337093085,
+      "secretData" : "{\"value\":\"zVEzyC+Z+yV2YDMjzgcY1whcxu/pBO1WZVIn8eZNRA7LklRrykPeVbpxm+7MfwW9QUmkfM9EMDP68eG3k39ylg==\",\"salt\":\"/3mtjV0rBwja3M4Br2gs2A==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "uma_authorization", "SUPER_ADMIN", "offline_access" ],
+    "clientRoles" : {
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

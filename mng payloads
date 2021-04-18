@@ -1,0 +1,941 @@
+{
+  "order": {
+    "referenceId": "SIPARIS34567",
+    "barcode": "SIPARIS34567",
+    "billOfLandingId": "İrsaliye 1",
+    "isCOD": 0,
+    "codAmount": 0,
+    "shipmentServiceType": 1,
+    "packagingType": 1,
+    "content": "İçerik 1",
+    "smsPreference1": 1,
+    "smsPreference2": 0,
+    "smsPreference3": 0,
+    "paymentType": 1,
+    "deliveryType": 1,
+    "description": "Açıklama 1",
+    "marketPlaceShortCode": "",
+    "marketPlaceSaleCode": ""
+  },
+
+  user----> pakaetleri getir.
+  user---->shipment ----> package
+
+
+
+  "orderPieceList": [
+    {
+      "barcode": "SIPARIS34567_PARCA1",
+      "desi": 2,
+      "kg": 1,
+      "content": "Parça açıklama 1"
+      shipment_id: 2 -----> orhan
+    },
+    {
+      "barcode": "SIPARIS34567_PARCA2",
+      "desi": 2,
+      "kg": 3,
+      "content": "Parça açıklama 2"
+    }
+  ],
+  "recipient": {
+    "customerId": 58513278,
+    "refCustomerId": "",
+    "cityCode": 0,
+    "districtCode": 0,
+    "address": "",
+    "bussinessPhoneNumber": "",
+    "email": "",
+    "taxOffice": "",
+    "taxNumber": "",
+    "fullName": "",
+    "homePhoneNumber": "",
+    "mobilePhoneNumber": ""
+  }
+}
+
+
+
+Gonderici---- orderReferenceId ------ consigneeId
+()
+(gonderici numarasi)     (siparis numarasi)      (alici numarasi)
+
+
+
+{
+  "type": "object",
+  "properties": {
+    "order": {
+      "required": [
+        "referenceId",
+        "shipmentServiceType",
+        "packagingType",
+        "content",
+        "smsPreference1",
+        "smsPreference2",
+        "smsPreference3",
+        "paymentType",
+        "deliveryType",
+        "description"
+      ],
+      "type": "object",
+      "properties": {
+        "referenceId": {
+          "description": "Identity Number of Order, ReferenceId must be unique foreach order. ReferenceId must be uppercase.\r\nSipariş Numarası, Sipariş numarası her sipariş için benzersiz olmalıdır. Sipariş numarası büyükharflerden oluşmalıdır.",
+          "type": "string"
+        },
+        "barcode": {
+          "description": "Barcode must be same with ReferenceId. Barcode must be uppercase.\r\nBarkod ReferenceId ile aynı olmalıdır. Barkod büyükharflerden oluşmalıdır.",
+          "type": "string"
+        },
+        "billOfLandingId": {
+          "description": "Bill Of LandingId\r\nİrsaliye Numarası",
+          "type": "string"
+        },
+        "isCOD": {
+          "format": "int32",
+          "description": "Indicates whether it is Cash On Delivery.\r\nKapıda Ödeme mi?",
+          "type": "integer"
+        },
+        "codAmount": {
+          "format": "double",
+          "description": "Cash on Delivery Amount\r\nKapıda Ödeme Miktarı",
+          "type": "number"
+        },
+        "shipmentServiceType": {
+          "format": "int32",
+          "description": "Shipment Service Type: 1:STANDART_TESLİMAT, 7:GUNİCİ_TESLİMAT, 8:AKŞAM_TESLİMAT\r\nGönderi Tipi",
+          "type": "integer"
+        },
+        "packagingType": {
+          "format": "int32",
+          "description": "Package Type of Order:  1:DOSYA, 2:Mİ, 3:PAKET, 4:KOLİ\r\nKargo Cinsi",
+          "type": "integer"
+        },
+        "content": {
+          "description": "Content\r\nGenel İçerik Bilgisi",
+          "type": "string"
+        },
+        "smsPreference1": {
+          "format": "int32",
+          "description": "SMSPreference Is Send SMS to Recipient When Shipment Reached to Destination Branch\r\nKargo varış şubesine ulaştığında alıcıya SMS gitsin mi?",
+          "type": "integer"
+        },
+        "smsPreference2": {
+          "format": "int32",
+          "description": "Is Send SMS to Recipient When Shpiment First Prepare\r\nKargo ilk hazırlandığında alıcıya SMS gitsin mi?",
+          "type": "integer"
+        },
+        "smsPreference3": {
+          "format": "int32",
+          "description": "Is Send SMS to Shipper When Shipment Delivered\r\nKargo teslim edildiğinde göndericiye SMS gitsin mi?",
+          "type": "integer"
+        },
+        "paymentType": {
+          "format": "int32",
+          "description": "Payment Type of Order: 1:GONDERICI_ODER, 2:ALICI_ODER,3:PLATFORM_ODER. Method CreateOrder does not apply to payment type 3. \r\nÖdeme Şekli, CreateOrder metodunda 3 tipindeki ödeme şekli geçerli değildir.",
+          "type": "integer"
+        },
+        "deliveryType": {
+          "format": "int32",
+          "description": "Delivery Type of Order: 1:ADRESE_TESLIM, 2:ALICISI_HABERLİ \r\nTeslim Şekli",
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "marketPlaceShortCode": {
+          "description": "Short MarketPlace Code of Order : ex: TRND, N11, GG, VIVE\r\nPazaryeri Kodu  örneğin: TRND, N11, GG, VIVE",
+          "type": "string"
+        },
+        "marketPlaceSaleCode": {
+          "description": "Sale Code of MarketPlace\r\nPazaryeri Satış Kodu",
+          "type": "string"
+        }
+      }
+    },
+    "orderPieceList": {
+      "uniqueItems": false,
+      "type": "array",
+      "items": {
+        "required": [
+          "barcode",
+          "desi",
+          "kg"
+        ],
+        "type": "object",
+        "properties": {
+          "barcode": {
+            "type": "string"
+          },
+          "desi": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "kg": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recipient": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "format": "int64",
+          "description": "Identity Number of Customer \r\nMüşteri Numarası",
+          "type": "integer"
+        },
+        "refCustomerId": {
+          "description": "Identity Number of Customer in their's own system.\r\nMüşterinin kendi sistemindeki numarası",
+          "type": "string"
+        },
+        "cityCode": {
+          "format": "int32",
+          "description": "Code of City you can provide code information from CBS Info API.\r\nŞehir Kodu, CBS Info API'den kod bilgisi alınabilir.",
+          "type": "integer"
+        },
+        "districtCode": {
+          "format": "int32",
+          "description": "Code of District you can provide code information from CBS Info API.\r\nİlçe Kodu, CBS Info API'den kod bilgisi alınabilir.",
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        },
+        "bussinessPhoneNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "taxOffice": {
+          "description": "Tax Office\r\nVergi Dairesi",
+          "type": "string"
+        },
+        "taxNumber": {
+          "description": "Tax Number\r\nVergi Numarası",
+          "type": "string"
+        },
+        "fullName": {
+          "description": "Full Name of Customer\r\nMüşterinin Tam Adı",
+          "type": "string"
+        },
+        "homePhoneNumber": {
+          "type": "string"
+        },
+        "mobilePhoneNumber": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "example": {
+    "order": {
+      "referenceId": "SIPARIS34567",
+      "barcode": "SIPARIS34567",
+      "billOfLandingId": "İrsaliye 1",
+      "isCOD": 0,
+      "codAmount": 0,
+      "shipmentServiceType": 1,
+      "packagingType": 1,
+      "content": "İçerik 1",
+      "smsPreference1": 1,
+      "smsPreference2": 0,
+      "smsPreference3": 0,
+      "paymentType": 1,
+      "deliveryType": 1,
+      "description": "Açıklama 1",
+      "marketPlaceShortCode": "",
+      "marketPlaceSaleCode": ""
+    },
+    "orderPieceList": [
+      {
+        "barcode": "SIPARIS34567_PARCA1",
+        "desi": 2,
+        "kg": 1,
+        "content": "Parça açıklama 1"
+      },
+      {
+        "barcode": "SIPARIS34567_PARCA2",
+        "desi": 2,
+        "kg": 3,
+        "content": "Parça açıklama 2"
+      }
+    ],
+    "recipient": {
+      "customerId": 58513278,
+      "refCustomerId": "",
+      "cityCode": 0,
+      "districtCode": 0,
+      "address": "",
+      "bussinessPhoneNumber": "",
+      "email": "",
+      "taxOffice": "",
+      "taxNumber": "",
+      "fullName": "",
+      "homePhoneNumber": "",
+      "mobilePhoneNumber": ""
+    }
+  }
+}
+
+
+
+
+{
+  "orderInvoiceId": "456764543",
+  "orderInvoiceDetailId": "25423565",
+  "shipperBranchCode": "1345"
+}
+
+
+
+
+
+
+
+
+
+
+[
+  {
+    "order": {
+      "orderType": "NORMAL",
+      "shipmentServiceType": "STANDART_TESLIMAT",
+      "packagingType": "DOSYA",
+      "isTransformedToShipment": 0,
+      "paymentType": "GONDERICI_ODER",
+      "deliveryType": "ADRESE_TESLIM",
+      "orderDate": "25-02-2021 00:00:00",
+      "isVerifiedOnMarketPlace": 0,
+      "shipmentId": null,
+      "referenceId": "SIPARIS345567",
+      "barcode": "SIPARIS345567",
+      "billOfLandingId": "İrsaliye 1",
+      "isCOD": 0,
+      "codAmount": 0,
+      "content": "İçerik 1",
+      "smsPreference1": 1,
+      "smsPreference2": 0,
+      "smsPreference3": 0,
+      "description": "Açıklama 1",
+      "marketPlaceShortCode": null,
+      "marketPlaceSaleCode": null
+    },
+    "orderPieceList": [
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 2,
+        "barcode": "SIPARIS34567_PARCA1",
+        "desi": 2,
+        "kg": 1,
+        "content": "Parça açıklama 1"
+      },
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 3,
+        "barcode": "SIPARIS34567_PARCA2",
+        "desi": 2,
+        "kg": 3,
+        "content": "Parça açıklama 2"
+      }
+    ],
+    "shipper": {
+      "customerId": 312947702,
+      "refCustomerId": null,
+      "city": null,
+      "district": null,
+      "address": null,
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": null,
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    },
+    "recipient": {
+      "customerId": 58513278,
+      "refCustomerId": null,
+      "city": "İSTANBUL",
+      "district": null,
+      "address": "HÜRRİYET Mh. AHMET YESEVİ Cd. İKİZLER Sk.İSTANBUL TÜRKIYE",
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": "123",
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    }
+  }
+]
+
+
+[
+  {
+    "orderInvoiceId": "467402",
+    "orderInvoiceDetailId": "467730",
+    "shipperBranchCode": "03420400"
+  }
+]
+
+
+
+[
+  {
+    "order": {
+      "orderType": "NORMAL",
+      "shipmentServiceType": "STANDART_TESLIMAT",
+      "packagingType": "DOSYA",
+      "isTransformedToShipment": 0,
+      "paymentType": "GONDERICI_ODER",
+      "deliveryType": "ADRESE_TESLIM",
+      "orderDate": "25-02-2021 00:00:00",
+      "isVerifiedOnMarketPlace": 0,
+      "shipmentId": null,
+      "referenceId": "SIPARIS344567",
+      "barcode": "SIPARIS344567",
+      "billOfLandingId": "İrsaliye 1",
+      "isCOD": 0,
+      "codAmount": 0,
+      "content": "İçerik 1",
+      "smsPreference1": 1,
+      "smsPreference2": 0,
+      "smsPreference3": 0,
+      "description": "Açıklama 1",
+      "marketPlaceShortCode": null,
+      "marketPlaceSaleCode": null
+    },
+    "orderPieceList": [
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 2,
+        "barcode": "SIPARIS34567_PARCA1",
+        "desi": 2,
+        "kg": 1,
+        "content": "Parça açıklama 1"
+      },
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 3,
+        "barcode": "SIPARIS34567_PARCA2",
+        "desi": 2,
+        "kg": 3,
+        "content": "Parça açıklama 2"
+      }
+    ],
+    "shipper": {
+      "customerId": 312947702,
+      "refCustomerId": null,
+      "city": null,
+      "district": null,
+      "address": null,
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": null,
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    },
+    "recipient": {
+      "customerId": 58513278,
+      "refCustomerId": "1212324234234",
+      "city": "İSTANBUL",
+      "district": null,
+      "address": "HÜRRİYET Mh. AHMET YESEVİ Cd. İKİZLER Sk.İSTANBUL TÜRKIYE",
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": "123",
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    }
+  }
+]
+
+
+[
+  {
+    "shipment": {
+      "shipmentServiceType": "STANDART_TESLIMAT",
+      "packagingType": "PAKET",
+      "paymentType": "GONDERICI_ODER",
+      "deliveryType": "ADRESE_TESLIM",
+      "referenceId": "SIPARIS344567",
+      "shipmentId": "569202197648",
+      "shipmentSerialNumber": "FM",
+      "shipmentNumber": "336042",
+      "shipmentDateTime": "25-02-2021 12:10:56",
+      "pieceCount": 2,
+      "totalKg": 4,
+      "totalDesi": 4,
+      "totalKgDesi": 5,
+      "total": 17.08,
+      "kdv": 3.07,
+      total: 203920-3923
+      finaltOTAL:I23I402394
+      "shipmentStatusCode": 1,
+      "isMarketPlaceShipment": 0,
+      "isMarketPlacePays": 0,
+      "receivingBranch": "ŞİRİNEVLER",
+      "shipperBranch": "ATLAS",
+      "description": null,
+      "billOfLandingId": "İrsaliye 1",
+      "isCOD": 0,
+      "codAmount": "0",
+      "content": "İçerik 1",
+      "estimatedDeliveryDate": "27-02-2021 00:00:00",
+      "deliveryDate": null,
+      "isDelivered": 0,
+      "deliveryTo": null
+    },
+    "shipmentPieceList": [
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 2,
+        "barcode": "D@6L@IQ@E4VFMKIFKAAA6K@",
+        "desi": 2,
+        "kg": 1,
+        "content": "Parça açıklama 1"
+      },
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 3,
+        "barcode": "D@6L@IQ@E4VFMKIFKAAB5S@",
+        "desi": 2,
+        "kg": 3,
+        "content": "Parça açıklama 2"
+      }
+    ],
+    "shipper": {
+      "customerId": null,
+      "refCustomerId": null,
+      "city": "İSTANBUL",
+      "district": "ESENLER",
+      "address": null,
+      "bussinessPhoneNumber": null,
+      "email": "erkan@potitifkargo.com",
+      "taxOffice": "ATIŞALANI VD",
+      "taxNumber": "3331197975",
+      "fullName": "XMXY XLXTXŞXM RXKLXM MXTBXX XNŞ. SXN. VX DXŞ TXC. LTD. ŞTX.",
+      "homePhoneNumber": "5442923499",
+      "mobilePhoneNumber": "5442923499"
+    },
+    "recipient": {
+      "customerId": null,
+      "refCustomerId": null,
+      "city": "İSTANBUL",
+      "district": null,
+      "address": null,
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": "123",
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    }
+  }
+]
+
+
+
+
+
+[
+  {
+    "shipment": {
+      "shipmentServiceType": "STANDART_TESLIMAT",
+      "packagingType": "PAKET",
+      "paymentType": "GONDERICI_ODER",
+      "deliveryType": "ADRESE_TESLIM",
+      "referenceId": "SIPARIS34567",
+      "shipmentId": "552459694881",
+      "shipmentSerialNumber": "FM",
+      "shipmentNumber": "309113",
+      "shipmentDateTime": "25-07-2020 00:07:09",
+      "pieceCount": 2,
+      "totalKg": 4,
+      "totalDesi": 4,
+      "totalKgDesi": 5,
+      "total": 16.37,
+      "kdv": 2.95,
+      "finalTotal": 19.32,
+      "shipmentStatusCode": 1,
+      "isMarketPlaceShipment": 0,
+      "isMarketPlacePays": 0,
+      "receivingBranch": "ŞİRİNEVLER",
+      "shipperBranch": "ATLAS",
+      "description": null,
+      "billOfLandingId": "İrsaliye 1",
+      "isCOD": 0,
+      "codAmount": "0",
+      "content": "İçerik 1",
+      "estimatedDeliveryDate": "27-07-2020 00:00:00",
+      "deliveryDate": null,
+      "isDelivered": 0,
+      "deliveryTo": null
+    },
+    "shipmentPieceList": [
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 2,
+        "barcode": "D@6L@IQ@E4UFMJN2ZAAA6K@",
+        "desi": 2,
+        "kg": 1,
+        "content": "Parça açıklama 1"
+      },
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 3,
+        "barcode": "D@6L@IQ@E4UFMJN2ZAAB5S@",
+        "desi": 2,
+        "kg": 3,
+        "content": "Parça açıklama 2"
+      }
+    ],
+    "shipper": {
+      "customerId": null,
+      "refCustomerId": null,
+      "city": "İSTANBUL",
+      "district": "ESENLER",
+      "address": null,
+      "bussinessPhoneNumber": null,
+      "email": "erkan@potitifkargo.com",
+      "taxOffice": "ATIŞALANI VD",
+      "taxNumber": "3331197975",
+      "fullName": "XMXY XLXTXŞXM RXKLXM MXTBXX XNŞ. SXN. VX DXŞ TXC. LTD. ŞTX.",
+      "homePhoneNumber": "5442923499",
+      "mobilePhoneNumber": "5442923499"
+    },
+    "recipient": {
+      "customerId": null,
+      "refCustomerId": null,
+      "city": "İSTANBUL",
+      "district": null,
+      "address": null,
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": "123",
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    }
+  }
+]
+
+
+{
+    "order": {
+      "orderType": "NORMAL",
+      "shipmentServiceType": "STANDART_TESLIMAT",
+      "packagingType": "PAKET",
+      "isTransformedToShipment": 1,
+      "paymentType": "GONDERICI_ODER",
+      "deliveryType": "ADRESE_TESLIM",
+      "orderDate": "25-02-2021 00:00:00",
+      "isVerifiedOnMarketPlace": 0,
+      "shipmentId": "552459694881",
+      "referenceId": "SIPARIS34567",
+      "barcode": "SIPARIS34567",
+      "billOfLandingId": "İrsaliye 2",
+      "isCOD": 0,
+      "codAmount": 0,
+      "content": "İçerik 1",
+      "smsPreference1": 1,
+      "smsPreference2": 0,
+      "smsPreference3": 0,
+      "description": "Açıklama 1",
+      "marketPlaceShortCode": null,
+      "marketPlaceSaleCode": null
+    },
+    "orderPieceList": [
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 3,
+        "barcode": "SIPARIS34567_PARCA1",
+        "desi": 3,
+        "kg": 1,
+        "content": "Parça açıklama 1"
+      },
+      {
+        "numberOfPieces": 2,
+        "kgDesi": 3,
+        "barcode": "SIPARIS34567_PARCA2",
+        "desi": 2,
+        "kg": 3,
+        "content": "Parça açıklama 2"
+      }
+    ],
+    "shipper": {
+      "customerId": 312947702,
+      "refCustomerId": null,
+      "city": null,
+      "district": null,
+      "address": null,
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": null,
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    },
+    "recipient": {
+      "customerId": 58513278,
+      "refCustomerId": null,
+      "city": "İSTANBUL",
+      "district": null,
+      "address": "HÜRRİYET Mh. AHMET YESEVİ Cd. İKİZLER Sk.İSTANBUL TÜRKIYE",
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": "123",
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    }
+  }
+]
+
+
+{
+  "order": {
+    "referenceId": "SIPARIS34567",
+    "barcode": "SIPARIS34567",
+    "billOfLandingId": "İrsaliye 1",
+    "isCOD": 0,
+    "codAmount": 0,
+    "shipmentServiceType": 1,
+    "packagingType": 1,
+    "content": "İçerik 1",
+    "smsPreference1": 1,
+    "smsPreference2": 0,
+    "smsPreference3": 0,
+    "paymentType": 1,
+    "deliveryType": 1,
+    "description": "Açıklama 1",
+    "marketPlaceShortCode": "",
+    "marketPlaceSaleCode": ""
+  },
+  "orderPieceList": [
+    {
+      "barcode": "SIPARIS34567_PARCA1",
+      "desi": 2,
+      "kg": 1,
+      "content": "Parça açıklama 1"
+    },
+    {
+      "barcode": "SIPARIS34567_PARCA2",
+      "desi": 2,
+      "kg": 3,
+      "content": "Parça açıklama 2"
+    }
+  ],
+  "shipper": {
+    "customerId": 58513278,
+    "refCustomerId": "",
+    "cityCode": 0,
+    "districtCode": 0,
+    "address": "",
+    "bussinessPhoneNumber": "",
+    "email": "",
+    "taxOffice": "",
+    "taxNumber": "",
+    "fullName": "",
+    "homePhoneNumber": "",
+    "mobilePhoneNumber": ""
+  },
+  "recipient": {
+    "customerId": 146405879,
+    "refCustomerId": "",
+    "cityCode": 0,
+    "districtCode": 0,
+    "address": "",
+    "bussinessPhoneNumber": "",
+    "email": "ornek2@ornekemail.com",
+    "taxOffice": "",
+    "taxNumber": "",
+    "fullName": "",
+    "homePhoneNumber": "",
+    "mobilePhoneNumber": ""
+  }
+}
+
+
+//CALCULATE
+
+{
+  "shipmentServiceType": 1,
+  "packagingType": 1,
+  "paymentType": 1,
+  "pickUpType": 1,
+  "deliveryType": 1,
+  "recipientCustomerId": null,
+  "cityCode": 34,
+  "districtCode": 56,
+  "address": "karadeniz mahallesi 1144 sokak no 25",
+  "smsPreference1": 1,
+  "smsPreference2": 1,
+  "smsPreference3": 0,
+  "orderPieceList": [
+    {
+      "barcode": "SIPARIS34567_PARCA1",
+      "desi": 2,
+      "kg": 1,
+      "content": "Parça açıklama 1"
+    },
+    {
+      "barcode": "SIPARIS34567_PARCA2",
+      "desi": 2,
+      "kg": 3,
+      "content": "Parça açıklama 2"
+    }
+  ]
+}
+
+
+[
+  {
+    "order": {
+      "orderType": "NORMAL",
+      "shipmentServiceType": "STANDART_TESLIMAT",
+      "packagingType": "PAKET",
+      "isTransformedToShipment": 0,
+      "paymentType": "GONDERICI_ODER",
+      "deliveryType": "ADRESE_TESLIM",
+      "orderDate": "19-03-2021 00:00:00",
+      "isVerifiedOnMarketPlace": 0,
+      "shipmentId": null,
+      "referenceId": "D4EF3RGLIYRS7DGT",
+      "barcode": "D4EF3RGLIYRS7DGT",
+      "billOfLandingId": null,
+      "isCOD": 0,
+      "codAmount": 0,
+      "content": "new content",
+      "tnId": null,
+      "smsPreference1": 3,
+      "smsPreference2": 0,
+      "smsPreference3": 1,
+      "description": "string",
+      "marketPlaceShortCode": null,
+      "marketPlaceSaleCode": null
+    },
+    "orderPieceList": [
+      {
+        "numberOfPieces": 1,
+        "kgDesi": 25,
+        "barcode": "D4EF3RGLIYRS7DGT",
+        "desi": 25,
+        "kg": 10,
+        "content": "new content"
+      }
+    ],
+    "shipper": {
+      "customerId": 529618307,
+      "refCustomerId": null,
+      "city": null,
+      "district": null,
+      "address": null,
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": null,
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": null
+    },
+    "recipient": {
+      "customerId": null,
+      "refCustomerId": null,
+      "city": "İSTANBUL",
+      "district": "ADALAR",
+      "address": "new address new address",
+      "bussinessPhoneNumber": null,
+      "email": null,
+      "taxOffice": null,
+      "taxNumber": null,
+      "fullName": "Osman Kartalkaya",
+      "homePhoneNumber": null,
+      "mobilePhoneNumber": "5498701070"
+    }
+  }
+]
+
+
+[
+  {
+    "referenceId": "SIBUMWNZSO4RCPLQ",
+    "shipmentId": "259494916651",
+    "eventSequence": "1",
+    "eventStatus": "Gönderi Hazırlandı",
+    "eventDateTime": "29-03-2021 15:24:18",
+    "location": "İSTANBUL (BAHÇELİEVLER)",
+    "locationAddress": "ATLAS Şube",
+    "locationPhone": "0212 657 09 85 - 657 09 86",
+    "deliveryDateTime": " ",
+    "deliveryTo": " ",
+    "description": null,
+    "pieceTotal": "1"
+  }
+]
+
+
+
+http://64.227.117.85:8082/auth/realms/kargo-pratik/protocol/openid-connect/auth?client_id=kargo-pratik-frontend&redirect_uri=http://localhost:3000/&response_mode=fragment&response_type=code&scope=openid&nonce=58e30899-5816-4711-a3b8-509a1fbe8485&code_challenge=hFKGYFgfvI3ySnkPbUaH6r881T4UG7obExikxKYeOsE&code_challenge_method=S256
+
+
+http://64.227.117.85:8082/auth/realms/kargo-pratik/protocol/openid-connect/auth?client_id=kargo-pratik-frontend&redirect_uri=http://localhost:3000&response_mode=fragment&response_type=code
+
+
+http://localhost:8082/auth/realms/kargo-pratik/protocol/openid-connect/auth?client_id=kargo-pratik-rest-api&redirect_uri=http://localhost:5000/swagger-ui.html&response_type=code
+  
+http://64.227.117.85:8082/auth/realms/kargo-pratik/protocol/openid-connect/logout?redirect_uri=http://localhost:3000&response_mode=fragment&response_type=code
+
+
+http://64.227.117.85:8082/auth/realms/kargo-pratik/protocol/openid-connect/auth?response_type=code&client_id=kargo-pratik-frontend-prod&redirect_uri=http://kargopratik.digitalact.com.tr&state=U3VuIEZlYiAyOCAyMDIxIDE3OjQxOjIxIEdNVCswMzAwIChHTVQrMDM6MDAp
+
+
+
+
+
+
+curl -X POST \
+  http://${host}:${port}/auth/realms/${realm}/protocol/openid-connect/token \
+  -H "Authorization: Bearer ${access_token}" \
+  --data "grant_type=urn:ietf:params:oauth:grant-type:uma-ticket" \
+  --data "audience={resource_server_client_id}"
+
+
+
+
+
+
+var context = $evaluation.getContext();
+var attributes = context.getAttributes();
+var httpUri = attributes.getValue('http.uri');
+
+if (httpUri) {
+    var uriParts = httpUri.asString(0).split('/');
+    var identity = context.getIdentity();
+    var userId = identity.getAttributes().getValue('id').asString(0);
+    if (uriParts[3] == userId) {
+        $evaluation.grant();
+    }
+}
+
+
+
+
+
+
+

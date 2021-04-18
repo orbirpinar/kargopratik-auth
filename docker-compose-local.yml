@@ -1,0 +1,43 @@
+version: '3'
+
+volumes:
+  postgres_data:
+      driver: local
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5434:5432
+  keycloak:
+      image: jboss/keycloak:12.0.2
+      container_name: auth-server
+      command:
+        - "-Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/jboss/keycloak/import-dir -Dkeycloak.migration.strategy=OVERWRITE_EXISTING  -Dkeycloak.profile.feature.upload_scripts=enabled"
+      environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: password
+        PROXY_ADDRESS_FORWARDING: "true"
+      volumes:
+        - ./config/import-dir:/opt/jboss/keycloak/import-dir
+        - ./config/export-dir:/opt/jboss/keycloak/export-dir
+        - ./config/standalone-ha.xml:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml
+        - ./config/themes/kargopratik:/opt/jboss/keycloak/themes/kargopratik
+        - ./config/themes/serendipity:/opt/jboss/keycloak/themes/serendipity
+        - ./config/themes/aerobase:/opt/jboss/keycloak/themes/aerobase
+        - ./config/themes/aerobase-bootstrap:/opt/jboss/keycloak/themes/aerobase-bootstrap
+        - ./config/themes/aerobase-cloud:/opt/jboss/keycloak/themes/aerobase-cloud
+      ports:
+        - 8082:8080
+      depends_on:
+        - postgres
