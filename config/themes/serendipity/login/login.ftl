@@ -8,11 +8,11 @@
           <div class="row justify-content-center h-100 align-items-center">
             <div class="col-xl-5 col-md-6">
               <div class="mini-logo text-center">
-                  <img src="../resources/img/kargopratik-logo.png" alt="logo" />
+                  <img src="./img/kargopratik-logo.png" alt="logo" />
               </div>
               <div class="auth-form card">
                 <div class="card-header justify-content-center">
-                  <h4 class="card-title">Giriş Yap</h4>
+                  <h4 class="card-title">aaaa</h4>
                 </div>
                 <#if realm.password>
                    <div class="card-body">
@@ -33,9 +33,9 @@
                         <div class="form-group">
                                     <label for="username" class="">
                                     <#if !realm.loginWithEmailAllowed>
-                                       Kullanici Adi
+                                       Kullanici 
                                     <#elseif !realm.registrationEmailAsUsername>
-                                        Kullani Adi veya E-posta
+                                        Kullani Adi
                                     <#else>
                                         E-posta
                                     </#if>
@@ -97,7 +97,9 @@
                           <span class="toggle-switch"></span>
                           <span class="toggle-label">Beni Hatırla</span>
                         </label>
+                    
                       </div>
+
 
                                 </#if>
                             </div>
@@ -106,8 +108,12 @@
                                     <span><a tabindex="0" href="${url.loginResetCredentialsUrl}">Sifremi Unuttum</a></span>
                                 </#if>
                             </div>
+                                    <div class="new-account caption mt-3">
+                <span> Hesabınız yok mu? <a tabindex="0" href="${url.registrationUrl}"> Üyelik Talebi Oluştur.</a></span>
+            </div>
                         </div>
 
+   
                         <#--
                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!}">
                             <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
@@ -143,9 +149,6 @@
 
             <hr class="mdc-list-divider divider-mdc">
 
-           <div class="new-account caption mt-3">
-                <span> Hesabınız yok mu? <a tabindex="0" href="${url.registrationUrl}"> Üyelik Talebi Oluştur.</a></span>
-            </div>
         </#if>
     </#if>
        </div>
