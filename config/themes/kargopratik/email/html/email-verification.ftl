@@ -255,7 +255,7 @@
                                                                                                         <table border="0" cellspacing="0" cellpadding="0" style="min-width: 200px;">
                                                                                                             <tr>
                                                                                                                 <td class="btn-16 c-white l-white" bgcolor="#000000" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family: Helvetica, sans-serif; text-align:center; font-weight:bold; border-radius:8px; min-width:auto !important; color:#ffffff;">
-                                                                                                                    <a href="#" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
+                                                                                                                    <a href="${kcSanitize(msg("emailVerifyLink",link))?no_esc}" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
                                                                                                                         <span class="link c-white" style="text-decoration:none; color:#ffffff;">Onayla</span>
                                                                                                                     </a>
                                                                                                                 </td>
