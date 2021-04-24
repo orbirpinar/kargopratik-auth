@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap" rel="stylesheet"> -->
     <!--<![endif]-->
-    <title>Hoşgeldiniz</title>
+    <title>E-posta adresinizi onaylayın.</title>
     <!--[if gte mso 9]>
 	<style type="text/css" media="all">
 		sup { font-size: 100% !important; }
@@ -219,7 +219,6 @@
                                                                         </tr>
                                                                     </table>
                                                                     <!-- Logo -->
-                                                                    
 
                                                                     <!-- Main -->
                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -232,20 +231,22 @@
                                                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                                                 <tr>
                                                                                                     <td class="fluid-img img-center pb-50" style="font-size:0pt; line-height:0pt; text-align:center; padding-bottom: 50px;">
-                                                                                                        <img src="https://kargopratik-image-bucket.s3.eu-central-1.amazonaws.com/welcome.png" width="333" height="333" border="0" alt="" />
+                                                                                                        <img src="https://kargopratik-image-bucket.s3.eu-central-1.amazonaws.com/verify.png" width="297" height="322" border="0" alt="" />
                                                                                                     </td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td class="title-36 a-center pb-15" style="font-size:26px; line-height:40px; color:#3D3956; font-family: Helvetica, sans-serif; min-width:auto !important; text-align:center; padding-bottom: 15px;">
-                                                                                                        Hoşgeldin ${user.firstName}
+                                                                                                        E-posta adresinizi onaylayın
                                                                                                     </td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td class="text-16 lh-20 a-center pb-25" style="font-size:14px; color:#9391A1; font-family: Helvetica, sans-serif; min-width:auto !important; line-height: 20px; text-align:center; padding-bottom: 25px;">
-                                                                                                        KargoPratik'e hoşgeldiniz, kullanıcıların KargoPratik ile daha az ödeyerek daha çok gönderim deneyimini keşfetmeye hazır mısın?
-
-                                                                                                        <br/> Türkiye'nin her bölge ve şehrine en uygun fiyat avantajlarını görebilir, gönderim sağlayabilirsiniz.
-Gönderini kolay ve hızlıca oluşturduktan sonra, tek bir panel üzerinden takip edebilirsiniz!
+                                                                                                        KargoPratike hoş Geldiniz! Üyeliğinizi tamamlamak için son bir adım kaldı! Aşağıdaki link çalışmaz ise URL yi kopyalayaıp tarayıcınıza yapıştırara çalıştırmayı deneyiniz.
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td class="text-16 lh-20 a-center pb-25" style="font-size:14px; color:#1F65EB; font-family: Helvetica, sans-serif; min-width:auto !important; line-height: 20px; text-align:center; padding-bottom: 25px;">
+                                                                                                        <a href="${kcSanitize(msg("emailVerifyLink",link))?no_esc}" target="_blank" class="link c-white" style="text-decoration:none; color:#1F65EB;"><span class="link c-white" style="text-decoration:none; color:#1F65EB;">${kcSanitize(msg("emailVerifyLink",link))?no_esc}</span></a>
                                                                                                     </td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -254,10 +255,8 @@ Gönderini kolay ve hızlıca oluşturduktan sonra, tek bir panel üzerinden tak
                                                                                                         <table border="0" cellspacing="0" cellpadding="0" style="min-width: 200px;">
                                                                                                             <tr>
                                                                                                                 <td class="btn-16 c-white l-white" bgcolor="#000000" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family: Helvetica, sans-serif; text-align:center; font-weight:bold; border-radius:8px; min-width:auto !important; color:#ffffff;">
-                                                                                                                    <a href=${kcSanitize(msg("emailVerifyLink",link))?no_esc} target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-                                                                                                                        <span class="link c-white" style="text-decoration:none; color:#ffffff;">İlk Gönderini Oluştur</span>
-
-
+                                                                                                                    <a href="#" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
+                                                                                                                        <span class="link c-white" style="text-decoration:none; color:#ffffff;">Onayla</span>
                                                                                                                     </a>
                                                                                                                 </td>
                                                                                                             </tr>
@@ -273,10 +272,8 @@ Gönderini kolay ve hızlıca oluşturduktan sonra, tek bir panel üzerinden tak
                                                                                                 <tr>
                                                                                                     <td class="text-16 lh-20 a-center" style="font-size:14px; color:#9391A1; font-family: Helvetica, sans-serif; min-width:auto !important; line-height: 20px; text-align:center; padding-top: 10px;">
                                                                                                         <a href="mailto:iletisim@kargopratik.com" target="_blank" class="link c-white" style="text-decoration:none; color:#1F65EB;"><span class="link c-white" style="text-decoration:none; color:#1F65EB;">iletisim@kargopratik.com</span></a>
-                                                        
                                                                                                     </td>
                                                                                                 </tr>
-
 
                                                                                             </table>
                                                                                         </td>
@@ -293,12 +290,9 @@ Gönderini kolay ve hızlıca oluşturduktan sonra, tek bir panel üzerinden tak
                                                     </td>
                                                 </tr>
                                             </table>
-
-                                                                                                                        
-
                                             <!-- END Container -->
 
-                                           <!-- Footer -->
+                                            <!-- Footer -->
                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
                                                     <td class="p-50 mpx-15" bgcolor="#000000" style="border-radius: 0 0 10px 10px; padding: 30px;">
