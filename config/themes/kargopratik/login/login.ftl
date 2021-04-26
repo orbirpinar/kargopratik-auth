@@ -1,7 +1,7 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
     <#if section = "header">
-        ${msg("loginAccountTitle")}
+        Giriş Yap
     <#elseif section = "form">
     <div id="kc-form">
       <div id="kc-form-wrapper">
@@ -28,7 +28,7 @@
 
                 <div class="${properties.kcFormGroupClass!}">
                     <#--  <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>  ekrem -->
-                    <label for="password" class="${properties.kcLabelClass!}">Şifre</label>
+                    <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
 
                     <input tabindex="2" id="password" class="${properties.kcInputClass!}" name="password" type="password" autocomplete="off"
                            aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
@@ -54,7 +54,7 @@
                         <div class="${properties.kcFormOptionsWrapperClass!}">
                             <#if realm.resetPasswordAllowed>
                                 <#-- ekrem <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></span>  -->
-                                <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">Şifremi unuttum</a></span>
+                                <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></span>
                             </#if>
                         </div>
 
