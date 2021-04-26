@@ -245,10 +245,11 @@ div.kc-logo-text span {
 }
 
 #kc-header-wrapper {
-    background-image: url(../img/kargopratik-logo.png);
+    background-size: contain;
+    background-image: url(../img/logo.svg);
     background-repeat: no-repeat;
-    height: 63px;
-    width: 300px;
+    background-position: center;
+    height: 30px;
     margin: 0 auto;
 }
 
@@ -499,11 +500,6 @@ ul#kc-totp-supported-apps {
     }
 
     #kc-header-wrapper {
-        background-image: url(../img/kargopratik-logo.png);
-        background-repeat: no-repeat;
-        height: 63px;
-        width: 300px;
-        margin: 0 auto;
     }
 
     div.kc-logo-text {
@@ -707,4 +703,36 @@ ul#kc-totp-supported-apps {
 
 #kc-back {
     margin-top: 5px;
+}
+
+
+/* New Css Code */
+.login-pf-page{height:100%;background:#fafafa;padding-top: 0;}
+.login-pf body{ background:none;}
+.login-pf{ background:no-repeat;}
+#kc-header{ padding:30px 0; background:#fff;}
+.login-pf-page .login-pf-header h1{ font-size:24px; color:#000; font-weight:500; margin:0;}
+.login-pf-page .card-pf{border:none;box-shadow:0 45px 223px rgb(0 0 0 / 5%), 0 10.0513px 49.81px rgb(0 0 0 / 3%), 0 2.99255px 14.8297px rgb(0 0 0 / 2%);border-radius:15px;padding:36px;margin: 0 auto;}
+.login-pf-page .login-pf-header{ margin-bottom:25px;}
+#kc-content #kc-form-wrapper .form-group{ align-items:center;}
+.card-pf .form-group label{font-size: 16px;font-weight:400;color:#000;margin-bottom:0;padding:8px 0;}
+.card-pf .form-group .pf-c-form-control{ height:50px; border:1px solid #f6f5fe; border-radius:5px; color:#000; line-height:normal; background:#f6f5fe; outline:none; padding:0 20px;}
+#kc-form-options .checkbox{ margin-bottom:0;}
+#kc-content #kc-form-wrapper #kc-form-options .checkbox label{padding:0;margin-left:20px;font-size: 14px;}
+#kc-content #kc-form-wrapper #kc-form-options .checkbox label input{ margin-top:6px;}
+.form-group.login-pf-settings div span a{ color:#000;}
+#kc-info{ margin:0; text-align:left;}
+#kc-info div#kc-info-wrapper{ background:none; padding:0;}
+#kc-registration span a{ color:#000;}
+div#kc-registration-container{ margin-top:10px;}
+.card-pf .form-group .pf-c-button{ background:#000; border-radius:10px; padding:10px 30px; font-size:16px;}
+
+div#kc-form-options span a {
+    color: #000;
+}
+
+@media (max-width: 767px){
+    .login-pf-page .card-pf {
+        margin: 0 20px;
+    }
 }

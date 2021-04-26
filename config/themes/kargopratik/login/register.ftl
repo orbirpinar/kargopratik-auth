@@ -6,7 +6,8 @@
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
             <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="firstName" class="${properties.kcLabelClass!}">${msg("firstName")}</label>
+                    <#-- ekrem  <label for="firstName" class="${properties.kcLabelClass!}">${msg("firstName")}</label>  -->
+                    <label for="firstName" class="${properties.kcLabelClass!}">İsim</label>
                 </div>
                 <div class="${properties.kcInputWrapperClass!}">
                     <input type="text" id="firstName" class="${properties.kcInputClass!}" name="firstName"
@@ -24,7 +25,8 @@
 
             <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="lastName" class="${properties.kcLabelClass!}">${msg("lastName")}</label>
+                    <#-- ekrem <label for="lastName" class="${properties.kcLabelClass!}">${msg("lastName")}</label>  -->
+                    <label for="lastName" class="${properties.kcLabelClass!}">Soyisim</label>
                 </div>
                 <div class="${properties.kcInputWrapperClass!}">
                     <input type="text" id="lastName" class="${properties.kcInputClass!}" name="lastName"
@@ -42,7 +44,8 @@
 
             <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="email" class="${properties.kcLabelClass!}">${msg("email")}</label>
+                    <#--  ekrem <label for="email" class="${properties.kcLabelClass!}">${msg("email")}</label>  -->
+                    <label for="email" class="${properties.kcLabelClass!}">E-posta</label>
                 </div>
                 <div class="${properties.kcInputWrapperClass!}">
                     <input type="text" id="email" class="${properties.kcInputClass!}" name="email"
@@ -81,7 +84,8 @@
             <#if passwordRequired??>
                 <div class="${properties.kcFormGroupClass!}">
                     <div class="${properties.kcLabelWrapperClass!}">
-                        <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
+                        <#--  ekrem <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>  -->
+                        <label for="password" class="${properties.kcLabelClass!}">Şifre</label>
                     </div>
                     <div class="${properties.kcInputWrapperClass!}">
                         <input type="password" id="password" class="${properties.kcInputClass!}" name="password"
@@ -99,8 +103,8 @@
 
                 <div class="${properties.kcFormGroupClass!}">
                     <div class="${properties.kcLabelWrapperClass!}">
-                        <label for="password-confirm"
-                               class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
+                        <#--  ekrem <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>  -->
+                        <label for="password-confirm" class="${properties.kcLabelClass!}">Şifre Onay</label>
                     </div>
                     <div class="${properties.kcInputWrapperClass!}">
                         <input type="password" id="password-confirm" class="${properties.kcInputClass!}"
@@ -128,12 +132,14 @@
             <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                     <div class="${properties.kcFormOptionsWrapperClass!}">
-                        <span><a href="${url.loginUrl}">${kcSanitize(msg("backToLogin"))?no_esc}</a></span>
+                        <#--  ekrem <span><a href="${url.loginUrl}">${kcSanitize(msg("backToLogin"))?no_esc}</a></span>  -->
+                        <span><a href="${url.loginUrl}">Geri</a></span>
                     </div>
                 </div>
 
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doRegister")}"/>
+                    <#--  ekrem <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doRegister")}"/>  -->
+                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="Kayıt Ol"/>
                 </div>
             </div>
         </form>

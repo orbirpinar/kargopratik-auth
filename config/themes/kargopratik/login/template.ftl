@@ -39,8 +39,8 @@
 <body class="${properties.kcBodyClass!}">
 <div class="${properties.kcLoginClass!}">
     <div id="kc-header" class="${properties.kcHeaderClass!}">
-        <div id="kc-header-wrapper"
-             class="${properties.kcHeaderWrapperClass!}">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}</div>
+        <#--  ekrem <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}</div>  -->
+        <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}"></div>
     </div>
     <div class="${properties.kcFormCardClass!}">
         <header class="${properties.kcFormHeaderClass!}">
@@ -70,6 +70,7 @@
                 </div>
             <#else>
                 <h1 id="kc-page-title"><#nested "header"></h1>
+                <#--  <h1 id="kc-page-title">Giriş Yap</h1>  -->
             </#if>
         <#else>
             <#if displayRequiredFields>
